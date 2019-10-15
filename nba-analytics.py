@@ -24,7 +24,8 @@ def main():
     player = firstname+" "+lastname
 
     #uses nbastats2018-2019.csv
-    avg_20_plus(filename)
+    #avg_20_plus(filename)
+    avg_20_plus_mins(filename)
   
 def avg_20_plus(filename):
     #returns players who avged more than 20 points
@@ -38,6 +39,17 @@ def avg_20_plus(filename):
             print(player["Name"])
     print(len(list_20_plus),"people averages over 20 pts")
 
+def avg_20_plus_mins(filename):
+    df = pd.read_csv(filename)
+
+    list_30_plus_mins = []
+    df['MP'] = df['MP'].astype(int)
+    
+    for index,player in df.iterrows():
+        if(player['MP']>=30):
+            list_30_plus_mins.append(player)
+            print(player.Name)
+    print(str(len(list_30_plus_mins))," players play 30 plus mins")
 
 
 if __name__=="__main__":
