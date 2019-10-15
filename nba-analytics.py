@@ -33,10 +33,10 @@ def avg_20_plus(filename):
     df['Points'] = df['Points'].astype(int)
     list_20_plus = []
     for index,player in df.iterrows():
-        if (player["Points"] >= 30):
+        if (player["Points"] >= 20):
             list_20_plus.append(player)
             print(player["Name"])
-    print(len(list_20_plus),"people averages over 30 pts")
+    print(len(list_20_plus),"people averages over 20 pts")
 
 
 
