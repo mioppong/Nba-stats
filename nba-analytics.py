@@ -28,6 +28,7 @@ def main():
     #avg_20_plus(filename)
     #avg_20_plus_mins(filename)
     points_per_minutes(filename)
+    #under_20_avg_20_plus(filename)
   
 def avg_20_plus(filename):
     #returns players who avged more than 20 points
@@ -52,6 +53,7 @@ def avg_20_plus_mins(filename):
             list_30_plus_mins.append(player)
             print(player.Name)
     print(str(len(list_30_plus_mins))," players play 30 plus mins")
+    
 
 
 def points_per_minutes(filename):
@@ -72,8 +74,20 @@ def points_per_minutes(filename):
 
     sorted_answer = sorted(dict_player_and_ppm.items(),key=operator.itemgetter(1))
 
+    for x in sorted_answer[::-1]:
+        print(x, "points divided by time played")
 
-    pprint(sorted_answer[::-1])
+
+
+def under_20_avg_20_plus(filename):
+    df = pd.read_csv(filename)
+
+    df.Age = df.Age.astype(int)
+    df['Points'] = df['Points'].astype(int)
+
+    for index, player in df.iterrows():
+        if((player.Age <= 20) and (player.Points >= 20)):
+            print(player.Name, "is age 20 or less, and averaged more than 20 Points")
 
 if __name__=="__main__":
     main()
