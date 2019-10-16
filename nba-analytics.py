@@ -6,6 +6,7 @@ from collections import defaultdict
 import argparse
 from pprint import pprint
 import operator
+import matplotlib.pyplot as plt
 
 
 
@@ -27,9 +28,10 @@ def main():
     #uses nbastats2018-2019.csv
     #avg_20_plus(filename)
     #avg_20_plus_mins(filename)
-    points_per_minutes(filename)
+    #points_per_minutes(filename)
     #under_20_avg_20_plus(filename)
-  
+    graph_weight_vs_blocks(filename)
+
 def avg_20_plus(filename):
     #returns players who avged more than 20 points
     df = pd.read_csv(filename)
@@ -88,6 +90,17 @@ def under_20_avg_20_plus(filename):
     for index, player in df.iterrows():
         if((player.Age <= 20) and (player.Points >= 20)):
             print(player.Name, "is age 20 or less, and averaged more than 20 Points")
+
+def graph_weight_vs_blocks(filename):
+    #compares weight to blocks
+    df  = pd.read_csv(filename)
+
+    plt.bar(df['Weight'],df['Blocks'],width=0.5)
+    plt.title('Weight vs Blocks')
+    plt.xlabel('Weight')
+    plt.ylabel('Blocks')
+    plt.show()
+
 
 if __name__=="__main__":
     main()
