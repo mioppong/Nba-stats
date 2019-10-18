@@ -7,6 +7,7 @@ import argparse
 from pprint import pprint
 import operator
 import matplotlib.pyplot as plt
+import math
 
 
 
@@ -30,7 +31,8 @@ def main():
     #avg_20_plus_mins(filename)
     #points_per_minutes(filename)
     #under_20_avg_20_plus(filename)
-    graph_weight_vs_blocks(filename)
+    #graph_weight_vs_blocks(filename)
+    plot_3_pct_vs_points(filename)
 
 def avg_20_plus(filename):
     #returns players who avged more than 20 points
@@ -101,6 +103,19 @@ def graph_weight_vs_blocks(filename):
     plt.ylabel('Blocks')
     plt.show()
 
+def plot_3_pct_vs_points(filename):
+    #prints out the average 3pt % in nba
+
+    df = pd.read_csv(filename)
+
+    plt.bar(df['FG%'], df['Points'], width=0.001)
+    plt.xlabel('FG %')
+    plt.ylabel('Points')
+    plt.title("Points vs FG %")
+    plt.show()
+
+
+    
 
 if __name__=="__main__":
     main()
