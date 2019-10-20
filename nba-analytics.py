@@ -17,14 +17,14 @@ def main():
     #arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("filename", help="csv file")
-    parser.add_argument("firstname", help="firstname of choice")
-    parser.add_argument("lastname",help="lastname of player")
+    #parser.add_argument("firstname", help="firstname of choice")
+    #parser.add_argument("lastname",help="lastname of player")
 
     args = parser.parse_args()
     filename = args.filename
-    firstname = args.firstname
-    lastname = args.lastname
-    player = firstname+" "+lastname
+    #firstname = args.firstname
+    #lastname = args.lastname
+    #player = firstname+" "+lastname
 
     #uses nbastats2018-2019.csv
     #avg_20_plus(filename)
@@ -32,7 +32,8 @@ def main():
     #points_per_minutes(filename)
     #under_20_avg_20_plus(filename)
     #graph_weight_vs_blocks(filename)
-    plot_3_pct_vs_points(filename)
+    #plot_3_pct_vs_points(filename)
+    plot_usage_vs_points(filename)
 
 def avg_20_plus(filename):
     #returns players who avged more than 20 points
@@ -101,7 +102,7 @@ def graph_weight_vs_blocks(filename):
     plt.title('Weight vs Blocks')
     plt.xlabel('Weight')
     plt.ylabel('Blocks')
-    plt.show()
+    plt.show() 
 
 def plot_3_pct_vs_points(filename):
     #prints out the average 3pt % in nba
@@ -114,7 +115,15 @@ def plot_3_pct_vs_points(filename):
     plt.title("Points vs FG %")
     plt.show()
 
+def plot_usage_vs_points(filename):
+    df  = pd.read_csv(filename)
 
+    plt.title("Usage vs Points")
+    plt.bar(df['USG'], df['Points'], width=0.1)
+    plt.xlabel('USAGE%')
+    plt.ylabel('Points Avg')
+
+    plt.show()
     
 
 if __name__=="__main__":
