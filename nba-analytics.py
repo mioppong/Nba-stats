@@ -33,7 +33,11 @@ def main():
     #under_20_avg_20_plus(filename)
     #graph_weight_vs_blocks(filename)
     #plot_3_pct_vs_points(filename)
-    plot_usage_vs_points(filename)
+    #plot_usage_vs_points(filename)
+    
+    
+    #uses nba-2018-2019-stats.csv
+    undrafted_20_pts(filename)
 
 def avg_20_plus(filename):
     #returns players who avged more than 20 points
@@ -124,7 +128,14 @@ def plot_usage_vs_points(filename):
     plt.ylabel('Points Avg')
 
     plt.show()
-    
+
+def undrafted_20_pts(filename):
+    df = pd.read_csv(filename)
+    df['PTS'] = df['PTS'].astype(int)
+
+    for index,player in df.iterrows():
+        if(player['DRAFT YEAR']=='Undrafted' and player['PTS'] > 15):
+            print(player['PLAYER'])
 
 if __name__=="__main__":
     main()
