@@ -35,9 +35,10 @@ def main():
     #plot_3_pct_vs_points(filename)
     #plot_usage_vs_points(filename)
     
-    
     #uses nba-2018-2019-stats.csv
-    undrafted_20_pts(filename)
+    #undrafted_15_pts(filename)
+    more_than_80_games(filename)
+
 
 def avg_20_plus(filename):
     #returns players who avged more than 20 points
@@ -129,7 +130,7 @@ def plot_usage_vs_points(filename):
 
     plt.show()
 
-def undrafted_20_pts(filename):
+def undrafted_15_pts(filename):
     df = pd.read_csv(filename)
     df['PTS'] = df['PTS'].astype(int)
 
@@ -137,5 +138,15 @@ def undrafted_20_pts(filename):
         if(player['DRAFT YEAR']=='Undrafted' and player['PTS'] > 15):
             print(player['PLAYER'])
 
+
+def more_than_80_games(filename):
+    df  = pd.read_csv(filename)
+    list_more_than_80_games = []
+    for index,player in df.iterrows():
+        if (player['GP']>80):
+            list_more_than_80_games.append(player['PLAYER'])
+
+    print(list_more_than_80_games)
+    print(str(len(list_more_than_80_games)) + " people played more than 80 games" )
 if __name__=="__main__":
     main()
