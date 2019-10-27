@@ -34,10 +34,11 @@ def main():
     #graph_weight_vs_blocks(filename)
     #plot_3_pct_vs_points(filename)
     #plot_usage_vs_points(filename)
+    plot_mp_vs_points(filename)
     
     #uses nba-2018-2019-stats.csv
     #undrafted_15_pts(filename)
-    more_than_80_games(filename)
+    #more_than_80_games(filename)
 
 
 def avg_20_plus(filename):
@@ -128,6 +129,15 @@ def plot_usage_vs_points(filename):
     plt.xlabel('USAGE%')
     plt.ylabel('Points Avg')
 
+    plt.show()
+
+
+def plot_mp_vs_points(filename):
+    df = pd.read_csv(filename)
+
+    plt.bar(df['MP'],df['Points'],alpha=0.8,label='MP vs Points')
+    plt.bar(df['USG'], df['Points'], alpha=0.4, label='USG vs Points')
+    plt.legend()
     plt.show()
 
 def undrafted_15_pts(filename):
