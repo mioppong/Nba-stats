@@ -22,59 +22,39 @@ import math
 ```
 
 
+### Running program
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+In the code, there are lines with
 ```
-Give an example
+#uses nbastats2018-2019.csv
+avg_20_plus_mins(filename)
+points_per_minutes(filename)
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
+or
 ```
-Give an example
+#uses nba-2018-2019-stats.csv
+undrafted_15_pts(filename)
+more_than_80_games(filename)
 ```
 
-## Deployment
+To run certain functions, we will require either nbastats2018-2019.csv, or nba-2018-2019-stats.csv.
 
-Add additional notes about how to deploy this on a live system
+so for example if we want to find the undrafted players who averaged more than 15 pts in the 2018-2019 season, the code above tells us to use nba-2018-2019-stats.csv, so we will first uncomment that function, then
 
-## Built With
+```
+python nba-analytics.py nba-2018-2019-stats.csv
+```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+## Future Work
+* In the future, I want to stray away from csv files, and scrape everything from the web, or use a library which does that
 
-## Contributing
+* I want to be able to get certain stats from whichever year, just write the function for it, and supply the data/stats/csv file through scraping basketball-reference
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* https://www.basketball-reference.com/
+* NBA.com
+
+## Author
+* Michael Oppong
